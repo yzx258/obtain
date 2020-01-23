@@ -1,0 +1,20 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" style="height: 100%">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" th:href="@{/static/layui/css/layui.css}">
+</head>
+<body>
+  <div style="margin-left:10px;">
+		<h3 th:text="${list.getMsg()}"></h3>
+		<h3>====================</h3>
+      <div th:each="event,eventStat : ${list.getData()}">
+      	<span th:text="${event.eventName}"></span>&nbsp;&nbsp;
+      	<span th:text="${event.eventQuiz}"></span>&nbsp;&nbsp;
+      	<span th:text="${event.eventResults}"></span>
+      </div>
+      <h3>====================</h3>
+      <h3 style="color: red;" th:text="${list.getNote()}"></h3>
+      </div>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rbgt.obtain.mapper.NbaTeventInfoMapper" >
+
+    <resultMap id="BaseResultMap" type="com.rbgt.obtain.entity.NbaTeventInfo" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="eventCode" property="eventCode" jdbcType="VARCHAR" />
+        <result column="eventName" property="eventName" jdbcType="VARCHAR" />
+        <result column="eventScoreOne" property="eventScoreOne" jdbcType="VARCHAR" />
+        <result column="eventScoreOneType" property="eventScoreOneType" jdbcType="VARCHAR" />
+        <result column="eventScoreTow" property="eventScoreTow" jdbcType="VARCHAR" />
+        <result column="eventScoreTowType" property="eventScoreTowType" jdbcType="VARCHAR" />
+        <result column="eventScoreThree" property="eventScoreThree" jdbcType="VARCHAR" />
+        <result column="eventScoreThreeType" property="eventScoreThreeType" jdbcType="VARCHAR" />
+        <result column="eventScoreFour" property="eventScoreFour" jdbcType="VARCHAR" />
+        <result column="eventScoreFourType" property="eventScoreFourType" jdbcType="VARCHAR" />
+        <result column="eventScoreJsOne" property="eventScoreJsOne" jdbcType="VARCHAR" />
+        <result column="eventScoreJsOneType" property="eventScoreJsOneType" jdbcType="VARCHAR" />
+        <result column="eventScoreJsTow" property="eventScoreJsTow" jdbcType="VARCHAR" />
+        <result column="eventScoreJsTowType" property="eventScoreJsTowType" jdbcType="VARCHAR" />
+        <result column="eventScoreJsThree" property="eventScoreJsThree" jdbcType="VARCHAR" />
+        <result column="eventScoreJsThreeType" property="eventScoreJsThreeType" jdbcType="VARCHAR" />
+        <result column="eventScoreJsFour" property="eventScoreJsFour" jdbcType="VARCHAR" />
+        <result column="eventScoreJsFourType" property="eventScoreJsFourType" jdbcType="VARCHAR" />
+        <result column="eventScoreAll" property="eventScoreAll" jdbcType="VARCHAR" />
+        <result column="eventScoreAllType" property="eventScoreAllType" jdbcType="VARCHAR" />
+        <result column="eventStartTime" property="eventStartTime" jdbcType="VARCHAR" />
+        <result column="eventEndTime" property="eventEndTime" jdbcType="VARCHAR" />
+        <result column="createTime" property="createTime" jdbcType="VARCHAR" />
+        <result column="updateTime" property="updateTime" jdbcType="VARCHAR" />
+        <result column="extension1" property="extension1" jdbcType="VARCHAR" />
+        <result column="extension2" property="extension2" jdbcType="VARCHAR" />
+        <result column="extension3" property="extension3" jdbcType="VARCHAR" />
+        <result column="extension4" property="extension4" jdbcType="VARCHAR" />
+        <result column="extension5" property="extension5" jdbcType="VARCHAR" />
+        <result column="extension6" property="extension6" jdbcType="VARCHAR" />
+        <result column="extension7" property="extension7" jdbcType="VARCHAR" />
+        <result column="extension8" property="extension8" jdbcType="VARCHAR" />
+        <result column="extension9" property="extension9" jdbcType="VARCHAR" />
+        <result column="extension10" property="extension10" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, eventCode, eventName, eventScoreOne, eventScoreOneType, eventScoreTow, eventScoreTowType, 
+        eventScoreThree, eventScoreThreeType, eventScoreFour, eventScoreFourType, eventScoreJsOne, 
+        eventScoreJsOneType, eventScoreJsTow, eventScoreJsTowType, eventScoreJsThree, eventScoreJsThreeType, 
+        eventScoreJsFour, eventScoreJsFourType, eventScoreAll, eventScoreAllType, eventStartTime, 
+        eventEndTime, createTime, updateTime, extension1, extension2, extension3, extension4, 
+        extension5, extension6, extension7, extension8, extension9, extension10
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from nba_t_event_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectByNameAndTime" resultMap="BaseResultMap" parameterType="com.rbgt.obtain.entity.NbaTeventInfo" >
+        select
+        <include refid="Base_Column_List" />
+        from nba_t_event_info
+        where eventName = #{eventName,jdbcType=VARCHAR} and createTime = #{createTime,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByExtension1" resultMap="BaseResultMap" parameterType="com.rbgt.obtain.entity.NbaTeventInfo" >
+        select
+        <include refid="Base_Column_List" />
+        from nba_t_event_info
+        where extension1 = #{extension1,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByName" resultMap="BaseResultMap" parameterType="com.rbgt.obtain.entity.NbaTeventInfo" >
+        select
+        <include refid="Base_Column_List" />
+        from nba_t_event_info
+        where eventName = #{eventName,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByTime" resultMap="BaseResultMap" parameterType="com.rbgt.obtain.entity.NbaTeventInfo" >
+        select
+        <include refid="Base_Column_List" />
+        from nba_t_event_info
+        where createTime = #{createTime,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from nba_t_event_info
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.rbgt.obtain.entity.NbaTeventInfo" >
+        insert into nba_t_event_info (id, eventCode, eventName,
+            eventScoreOne, eventScoreOneType, eventScoreTow,
+            eventScoreTowType, eventScoreThree, eventScoreThreeType,
+            eventScoreFour, eventScoreFourType, eventScoreJsOne,
+            eventScoreJsOneType, eventScoreJsTow,
+            eventScoreJsTowType, eventScoreJsThree,
+            eventScoreJsThreeType, eventScoreJsFour,
+            eventScoreJsFourType, eventScoreAll,
+            eventScoreAllType, eventStartTime, eventEndTime,
+            createTime, updateTime, extension1,
+            extension2, extension3, extension4,
+            extension5, extension6, extension7,
+            extension8, extension9, extension10
+            )
+        values (#{id,jdbcType=INTEGER}, #{eventCode,jdbcType=VARCHAR}, #{eventName,jdbcType=VARCHAR},
+            #{eventScoreOne,jdbcType=VARCHAR}, #{eventScoreOneType,jdbcType=VARCHAR}, #{eventScoreTow,jdbcType=VARCHAR},
+            #{eventScoreTowType,jdbcType=VARCHAR}, #{eventScoreThree,jdbcType=VARCHAR}, #{eventScoreThreeType,jdbcType=VARCHAR},
+            #{eventScoreFour,jdbcType=VARCHAR}, #{eventScoreFourType,jdbcType=VARCHAR}, #{eventScoreJsOne,jdbcType=VARCHAR},
+            #{eventScoreJsOneType,jdbcType=VARCHAR}, #{eventScoreJsTow,jdbcType=VARCHAR},
+            #{eventScoreJsTowType,jdbcType=VARCHAR}, #{eventScoreJsThree,jdbcType=VARCHAR},
+            #{eventScoreJsThreeType,jdbcType=VARCHAR}, #{eventScoreJsFour,jdbcType=VARCHAR},
+            #{eventScoreJsFourType,jdbcType=VARCHAR}, #{eventScoreAll,jdbcType=VARCHAR},
+            #{eventScoreAllType,jdbcType=VARCHAR}, #{eventStartTime,jdbcType=VARCHAR}, #{eventEndTime,jdbcType=VARCHAR},
+            #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, #{extension1,jdbcType=VARCHAR},
+            #{extension2,jdbcType=VARCHAR}, #{extension3,jdbcType=VARCHAR}, #{extension4,jdbcType=VARCHAR},
+            #{extension5,jdbcType=VARCHAR}, #{extension6,jdbcType=VARCHAR}, #{extension7,jdbcType=VARCHAR},
+            #{extension8,jdbcType=VARCHAR}, #{extension9,jdbcType=VARCHAR}, #{extension10,jdbcType=VARCHAR}
+            )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.rbgt.obtain.entity.NbaTeventInfo" >
+        insert into nba_t_event_info
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="eventCode != null" >
+                eventCode,
+            </if>
+            <if test="eventName != null" >
+                eventName,
+            </if>
+            <if test="eventScoreOne != null" >
+                eventScoreOne,
+            </if>
+            <if test="eventScoreOneType != null" >
+                eventScoreOneType,
+            </if>
+            <if test="eventScoreTow != null" >
+                eventScoreTow,
+            </if>
+            <if test="eventScoreTowType != null" >
+                eventScoreTowType,
+            </if>
+            <if test="eventScoreThree != null" >
+                eventScoreThree,
+            </if>
+            <if test="eventScoreThreeType != null" >
+                eventScoreThreeType,
+            </if>
+            <if test="eventScoreFour != null" >
+                eventScoreFour,
+            </if>
+            <if test="eventScoreFourType != null" >
+                eventScoreFourType,
+            </if>
+            <if test="eventScoreJsOne != null" >
+                eventScoreJsOne,
+            </if>
+            <if test="eventScoreJsOneType != null" >
+                eventScoreJsOneType,
+            </if>
+            <if test="eventScoreJsTow != null" >
+                eventScoreJsTow,
+            </if>
+            <if test="eventScoreJsTowType != null" >
+                eventScoreJsTowType,
+            </if>
+            <if test="eventScoreJsThree != null" >
+                eventScoreJsThree,
+            </if>
+            <if test="eventScoreJsThreeType != null" >
+                eventScoreJsThreeType,
+            </if>
+            <if test="eventScoreJsFour != null" >
+                eventScoreJsFour,
+            </if>
+            <if test="eventScoreJsFourType != null" >
+                eventScoreJsFourType,
+            </if>
+            <if test="eventScoreAll != null" >
+                eventScoreAll,
+            </if>
+            <if test="eventScoreAllType != null" >
+                eventScoreAllType,
+            </if>
+            <if test="eventStartTime != null" >
+                eventStartTime,
+            </if>
+            <if test="eventEndTime != null" >
+                eventEndTime,
+            </if>
+            <if test="createTime != null" >
+                createTime,
+            </if>
+            <if test="updateTime != null" >
+                updateTime,
+            </if>
+            <if test="extension1 != null" >
+                extension1,
+            </if>
+            <if test="extension2 != null" >
+                extension2,
+            </if>
+            <if test="extension3 != null" >
+                extension3,
+            </if>
+            <if test="extension4 != null" >
+                extension4,
+            </if>
+            <if test="extension5 != null" >
+                extension5,
+            </if>
+            <if test="extension6 != null" >
+                extension6,
+            </if>
+            <if test="extension7 != null" >
+                extension7,
+            </if>
+            <if test="extension8 != null" >
+                extension8,
+            </if>
+            <if test="extension9 != null" >
+                extension9,
+            </if>
+            <if test="extension10 != null" >
+                extension10,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="eventCode != null" >
+                #{eventCode,jdbcType=VARCHAR},
+            </if>
+            <if test="eventName != null" >
+                #{eventName,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreOne != null" >
+                #{eventScoreOne,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreOneType != null" >
+                #{eventScoreOneType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreTow != null" >
+                #{eventScoreTow,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreTowType != null" >
+                #{eventScoreTowType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreThree != null" >
+                #{eventScoreThree,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreThreeType != null" >
+                #{eventScoreThreeType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreFour != null" >
+                #{eventScoreFour,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreFourType != null" >
+                #{eventScoreFourType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsOne != null" >
+                #{eventScoreJsOne,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsOneType != null" >
+                #{eventScoreJsOneType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsTow != null" >
+                #{eventScoreJsTow,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsTowType != null" >
+                #{eventScoreJsTowType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsThree != null" >
+                #{eventScoreJsThree,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsThreeType != null" >
+                #{eventScoreJsThreeType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsFour != null" >
+                #{eventScoreJsFour,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsFourType != null" >
+                #{eventScoreJsFourType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreAll != null" >
+                #{eventScoreAll,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreAllType != null" >
+                #{eventScoreAllType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventStartTime != null" >
+                #{eventStartTime,jdbcType=VARCHAR},
+            </if>
+            <if test="eventEndTime != null" >
+                #{eventEndTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="extension1 != null" >
+                #{extension1,jdbcType=VARCHAR},
+            </if>
+            <if test="extension2 != null" >
+                #{extension2,jdbcType=VARCHAR},
+            </if>
+            <if test="extension3 != null" >
+                #{extension3,jdbcType=VARCHAR},
+            </if>
+            <if test="extension4 != null" >
+                #{extension4,jdbcType=VARCHAR},
+            </if>
+            <if test="extension5 != null" >
+                #{extension5,jdbcType=VARCHAR},
+            </if>
+            <if test="extension6 != null" >
+                #{extension6,jdbcType=VARCHAR},
+            </if>
+            <if test="extension7 != null" >
+                #{extension7,jdbcType=VARCHAR},
+            </if>
+            <if test="extension8 != null" >
+                #{extension8,jdbcType=VARCHAR},
+            </if>
+            <if test="extension9 != null" >
+                #{extension9,jdbcType=VARCHAR},
+            </if>
+            <if test="extension10 != null" >
+                #{extension10,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.rbgt.obtain.entity.NbaTeventInfo" >
+        update nba_t_event_info
+        <set >
+            <if test="eventCode != null" >
+                eventCode = #{eventCode,jdbcType=VARCHAR},
+            </if>
+            <if test="eventName != null" >
+                eventName = #{eventName,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreOne != null" >
+                eventScoreOne = #{eventScoreOne,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreOneType != null" >
+                eventScoreOneType = #{eventScoreOneType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreTow != null" >
+                eventScoreTow = #{eventScoreTow,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreTowType != null" >
+                eventScoreTowType = #{eventScoreTowType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreThree != null" >
+                eventScoreThree = #{eventScoreThree,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreThreeType != null" >
+                eventScoreThreeType = #{eventScoreThreeType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreFour != null" >
+                eventScoreFour = #{eventScoreFour,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreFourType != null" >
+                eventScoreFourType = #{eventScoreFourType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsOne != null" >
+                eventScoreJsOne = #{eventScoreJsOne,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsOneType != null" >
+                eventScoreJsOneType = #{eventScoreJsOneType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsTow != null" >
+                eventScoreJsTow = #{eventScoreJsTow,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsTowType != null" >
+                eventScoreJsTowType = #{eventScoreJsTowType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsThree != null" >
+                eventScoreJsThree = #{eventScoreJsThree,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsThreeType != null" >
+                eventScoreJsThreeType = #{eventScoreJsThreeType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsFour != null" >
+                eventScoreJsFour = #{eventScoreJsFour,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreJsFourType != null" >
+                eventScoreJsFourType = #{eventScoreJsFourType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreAll != null" >
+                eventScoreAll = #{eventScoreAll,jdbcType=VARCHAR},
+            </if>
+            <if test="eventScoreAllType != null" >
+                eventScoreAllType = #{eventScoreAllType,jdbcType=VARCHAR},
+            </if>
+            <if test="eventStartTime != null" >
+                eventStartTime = #{eventStartTime,jdbcType=VARCHAR},
+            </if>
+            <if test="eventEndTime != null" >
+                eventEndTime = #{eventEndTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                createTime = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null" >
+                updateTime = #{updateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="extension1 != null" >
+                extension1 = #{extension1,jdbcType=VARCHAR},
+            </if>
+            <if test="extension2 != null" >
+                extension2 = #{extension2,jdbcType=VARCHAR},
+            </if>
+            <if test="extension3 != null" >
+                extension3 = #{extension3,jdbcType=VARCHAR},
+            </if>
+            <if test="extension4 != null" >
+                extension4 = #{extension4,jdbcType=VARCHAR},
+            </if>
+            <if test="extension5 != null" >
+                extension5 = #{extension5,jdbcType=VARCHAR},
+            </if>
+            <if test="extension6 != null" >
+                extension6 = #{extension6,jdbcType=VARCHAR},
+            </if>
+            <if test="extension7 != null" >
+                extension7 = #{extension7,jdbcType=VARCHAR},
+            </if>
+            <if test="extension8 != null" >
+                extension8 = #{extension8,jdbcType=VARCHAR},
+            </if>
+            <if test="extension9 != null" >
+                extension9 = #{extension9,jdbcType=VARCHAR},
+            </if>
+            <if test="extension10 != null" >
+                extension10 = #{extension10,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.rbgt.obtain.entity.NbaTeventInfo" >
+        update nba_t_event_info
+        set eventCode = #{eventCode,jdbcType=VARCHAR},
+            eventName = #{eventName,jdbcType=VARCHAR},
+            eventScoreOne = #{eventScoreOne,jdbcType=VARCHAR},
+            eventScoreOneType = #{eventScoreOneType,jdbcType=VARCHAR},
+            eventScoreTow = #{eventScoreTow,jdbcType=VARCHAR},
+            eventScoreTowType = #{eventScoreTowType,jdbcType=VARCHAR},
+            eventScoreThree = #{eventScoreThree,jdbcType=VARCHAR},
+            eventScoreThreeType = #{eventScoreThreeType,jdbcType=VARCHAR},
+            eventScoreFour = #{eventScoreFour,jdbcType=VARCHAR},
+            eventScoreFourType = #{eventScoreFourType,jdbcType=VARCHAR},
+            eventScoreJsOne = #{eventScoreJsOne,jdbcType=VARCHAR},
+            eventScoreJsOneType = #{eventScoreJsOneType,jdbcType=VARCHAR},
+            eventScoreJsTow = #{eventScoreJsTow,jdbcType=VARCHAR},
+            eventScoreJsTowType = #{eventScoreJsTowType,jdbcType=VARCHAR},
+            eventScoreJsThree = #{eventScoreJsThree,jdbcType=VARCHAR},
+            eventScoreJsThreeType = #{eventScoreJsThreeType,jdbcType=VARCHAR},
+            eventScoreJsFour = #{eventScoreJsFour,jdbcType=VARCHAR},
+            eventScoreJsFourType = #{eventScoreJsFourType,jdbcType=VARCHAR},
+            eventScoreAll = #{eventScoreAll,jdbcType=VARCHAR},
+            eventScoreAllType = #{eventScoreAllType,jdbcType=VARCHAR},
+            eventStartTime = #{eventStartTime,jdbcType=VARCHAR},
+            eventEndTime = #{eventEndTime,jdbcType=VARCHAR},
+            createTime = #{createTime,jdbcType=VARCHAR},
+            updateTime = #{updateTime,jdbcType=VARCHAR},
+            extension1 = #{extension1,jdbcType=VARCHAR},
+            extension2 = #{extension2,jdbcType=VARCHAR},
+            extension3 = #{extension3,jdbcType=VARCHAR},
+            extension4 = #{extension4,jdbcType=VARCHAR},
+            extension5 = #{extension5,jdbcType=VARCHAR},
+            extension6 = #{extension6,jdbcType=VARCHAR},
+            extension7 = #{extension7,jdbcType=VARCHAR},
+            extension8 = #{extension8,jdbcType=VARCHAR},
+            extension9 = #{extension9,jdbcType=VARCHAR},
+            extension10 = #{extension10,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rbgt.obtain.mapper.NbaTquizInfoCopyMapper" >
+
+    <resultMap id="BaseResultMap" type="com.rbgt.obtain.entity.NbaTquizInfoCopy" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="quizCode" property="quizCode" jdbcType="VARCHAR" />
+        <result column="quizName" property="quizName" jdbcType="VARCHAR" />
+        <result column="quizEnvision" property="quizEnvision" jdbcType="VARCHAR" />
+        <result column="quizResults" property="quizResults" jdbcType="VARCHAR" />
+        <result column="quizCreateTime" property="quizCreateTime" jdbcType="VARCHAR" />
+        <result column="quizUpdateTime" property="quizUpdateTime" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, quizCode, quizName, quizEnvision, quizResults, quizCreateTime, quizUpdateTime
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from nba_t_quiz_info_copy
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectByCreateTime" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from nba_t_quiz_info_copy
+        where quizCreateTime = #{quizCreateTime,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByCreateTimeAndUpdate" resultMap="BaseResultMap" parameterType="com.rbgt.obtain.entity.NbaTquizInfoCopy" >
+        select
+        <include refid="Base_Column_List" />
+        from nba_t_quiz_info_copy
+        where quizCreateTime = #{quizCreateTime,jdbcType=VARCHAR} and quizUpdateTime =  #{quizUpdateTime,jdbcType=VARCHAR}
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from nba_t_quiz_info_copy
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.rbgt.obtain.entity.NbaTquizInfoCopy" >
+        insert into nba_t_quiz_info_copy (id, quizCode, quizName,
+            quizEnvision, quizResults, quizCreateTime,
+            quizUpdateTime)
+        values (#{id,jdbcType=INTEGER}, #{quizCode,jdbcType=VARCHAR}, #{quizName,jdbcType=VARCHAR},
+            #{quizEnvision,jdbcType=VARCHAR}, #{quizResults,jdbcType=VARCHAR}, #{quizCreateTime,jdbcType=VARCHAR},
+            #{quizUpdateTime,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.rbgt.obtain.entity.NbaTquizInfoCopy" >
+        insert into nba_t_quiz_info_copy
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="quizCode != null" >
+                quizCode,
+            </if>
+            <if test="quizName != null" >
+                quizName,
+            </if>
+            <if test="quizEnvision != null" >
+                quizEnvision,
+            </if>
+            <if test="quizResults != null" >
+                quizResults,
+            </if>
+            <if test="quizCreateTime != null" >
+                quizCreateTime,
+            </if>
+            <if test="quizUpdateTime != null" >
+                quizUpdateTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="quizCode != null" >
+                #{quizCode,jdbcType=VARCHAR},
+            </if>
+            <if test="quizName != null" >
+                #{quizName,jdbcType=VARCHAR},
+            </if>
+            <if test="quizEnvision != null" >
+                #{quizEnvision,jdbcType=VARCHAR},
+            </if>
+            <if test="quizResults != null" >
+                #{quizResults,jdbcType=VARCHAR},
+            </if>
+            <if test="quizCreateTime != null" >
+                #{quizCreateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="quizUpdateTime != null" >
+                #{quizUpdateTime,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.rbgt.obtain.entity.NbaTquizInfoCopy" >
+        update nba_t_quiz_info_copy
+        <set >
+            <if test="quizCode != null" >
+                quizCode = #{quizCode,jdbcType=VARCHAR},
+            </if>
+            <if test="quizName != null" >
+                quizName = #{quizName,jdbcType=VARCHAR},
+            </if>
+            <if test="quizEnvision != null" >
+                quizEnvision = #{quizEnvision,jdbcType=VARCHAR},
+            </if>
+            <if test="quizResults != null" >
+                quizResults = #{quizResults,jdbcType=VARCHAR},
+            </if>
+            <if test="quizCreateTime != null" >
+                quizCreateTime = #{quizCreateTime,jdbcType=VARCHAR},
+            </if>
+            <if test="quizUpdateTime != null" >
+                quizUpdateTime = #{quizUpdateTime,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.rbgt.obtain.entity.NbaTquizInfoCopy" >
+        update nba_t_quiz_info_copy
+        set quizCode = #{quizCode,jdbcType=VARCHAR},
+            quizName = #{quizName,jdbcType=VARCHAR},
+            quizEnvision = #{quizEnvision,jdbcType=VARCHAR},
+            quizResults = #{quizResults,jdbcType=VARCHAR},
+            quizCreateTime = #{quizCreateTime,jdbcType=VARCHAR},
+            quizUpdateTime = #{quizUpdateTime,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
